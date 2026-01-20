@@ -1,173 +1,126 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import { videoProjects } from '../../data/videos.data';
 import './HeroSection.scss';
 
 const HeroSection = () => {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
-
-  const handleNextVideo = () => {
-    setCurrentVideoIndex((prev) => 
-      prev === videoProjects.length - 1 ? 0 : prev + 1
-    );
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Vídeo principal - você pode substituir pela sua URL
+  const heroVideo = {
+    url: 'https://assets.mixkit.co/videos/preview/mixkit-sunset-over-a-lake-1095-large.mp4',
+    fallbackImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    title: 'Showreel 2024',
+    subtitle: 'Cinematic Visual Experiences'
   };
 
-  const handlePreviousVideo = () => {
-    setCurrentVideoIndex((prev) => 
-      prev === 0 ? videoProjects.length - 1 : prev - 1
-    );
-  };
-
-  const handleVideoSelect = (index: number) => {
-    setCurrentVideoIndex(index);
-    setAutoplayEnabled(true);
-  };
-
-  // Keyboard controls
   useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      switch(e.key) {
-        case ' ':
-          e.preventDefault();
-          setAutoplayEnabled(!autoplayEnabled);
-          break;
-        case 'ArrowRight':
-          handleNextVideo();
-          break;
-        case 'ArrowLeft':
-          handlePreviousVideo();
-          break;
-      }
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => {
+      setIsLoaded(true);
+      video.play().catch(e => {
+        console.log('Autoplay prevented:', e);
+        // Fallback para autoplay bloqueado
+        video.muted = true;
+        video.play();
+      });
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [autoplayEnabled]);
+    video.addEventListener('canplay', handleCanPlay);
+    
+    // Tentar carregar o vídeo
+    video.load();
 
-  const currentVideo = videoProjects[currentVideoIndex];
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+    };
+  }, []);
 
   return (
     <section id="hero" className="hero-section">
-      <div className="container">
-        <div className="hero-content">
-          {/* Featured Video Player */}
-          <motion.div 
-            className="hero-video"
+      {/* Overlay escuro para melhor contraste do texto */}
+      <div className="hero-overlay"></div>
+      
+      {/* Vídeo de fundo em fullscreen */}
+      <div className="hero-video-container">
+        <video
+          ref={videoRef}
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={heroVideo.fallbackImage}
+        >
+          <source src={heroVideo.url} type="video/mp4" />
+          {/* Fallback para navegadores sem suporte */}
+          <img src={heroVideo.fallbackImage} alt={heroVideo.title} />
+        </video>
+        
+        {/* Loading state */}
+        {!isLoaded && (
+          <div className="video-loading">
+            <div className="loading-spinner"></div>
+          </div>
+        )}
+      </div>
+
+      {/* Conteúdo sobreposto ao vídeo */}
+      <div className="hero-content">
+        <motion.div
+          className="hero-text"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="hero-title"
+          >
+            {heroVideo.title}
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="hero-subtitle"
+          >
+            {heroVideo.subtitle}
+          </motion.p>
+          
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="hero-cta"
           >
-            <VideoPlayer
-              url={currentVideo.videoUrl}
-              title={currentVideo.title}
-              autoPlay={autoplayEnabled}
-              onNext={handleNextVideo}
-              onPrevious={handlePreviousVideo}
-              showControls={true}
-            />
+            <a href="#portfolio" className="cta-button">
+              View Portfolio
+            </a>
+            <a href="#contact" className="cta-button secondary">
+              Get in Touch
+            </a>
           </motion.div>
+        </motion.div>
 
-          {/* Video Information */}
-          <motion.div
-            className="hero-info"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="video-details">
-              <motion.h1 
-                key={currentVideo.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="video-title"
-              >
-                {currentVideo.title}
-              </motion.h1>
-              
-              <motion.p 
-                key={`desc-${currentVideo.id}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="video-description"
-              >
-                {currentVideo.description}
-              </motion.p>
-
-              <motion.div 
-                className="video-meta"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <span className="category">{currentVideo.category}</span>
-                <span className="year">{currentVideo.year}</span>
-                {currentVideo.client && (
-                  <span className="client">Client: {currentVideo.client}</span>
-                )}
-              </motion.div>
-
-              <motion.div 
-                className="video-navigation"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <div className="video-counter">
-                  <span className="current">{currentVideoIndex + 1}</span>
-                  <span className="separator">/</span>
-                  <span className="total">{videoProjects.length}</span>
-                </div>
-                
-                <div className="keyboard-shortcuts">
-                  <div className="shortcut">
-                    <kbd>←</kbd>
-                    <span>Previous</span>
-                  </div>
-                  <div className="shortcut">
-                    <kbd>Space</kbd>
-                    <span>Play/Pause</span>
-                  </div>
-                  <div className="shortcut">
-                    <kbd>→</kbd>
-                    <span>Next</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Thumbnail Navigation */}
-            <motion.div 
-              className="thumbnail-nav"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <h3>More Projects</h3>
-              <div className="thumbnails">
-                {videoProjects.slice(0, 4).map((video, index) => (
-                  <motion.button
-                    key={video.id}
-                    className={`thumbnail-item ${currentVideoIndex === index ? 'active' : ''}`}
-                    onClick={() => handleVideoSelect(index)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img src={video.thumbnailUrl} alt={video.title} />
-                    <div className="thumbnail-overlay">
-                      <span className="duration">
-                        {Math.floor(video.duration / 60)}:{String(video.duration % 60).padStart(2, '0')}
-                      </span>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+        {/* Scroll indicator */}
+        <motion.div
+          className="scroll-indicator"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+        >
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
+          <p>Scroll to explore</p>
+        </motion.div>
       </div>
     </section>
   );
