@@ -32,23 +32,6 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div 
-            className="footer-links"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h3>Navegação</h3>
-            <nav>
-              <a href="#hero">Início</a>
-              <a href="#portfolio">Portfólio</a>
-              <a href="#about">Sobre</a>
-              <a href="#contact">Contato</a>
-            </nav>
-          </motion.div>
-
           {/* Contact Info */}
           <motion.div 
             className="footer-contact"
@@ -63,13 +46,13 @@ const Footer = () => {
                 <FiMail />
                 <span>contato@paraisoframes.com</span>
               </a>
-              <a href="tel:+5511999999999" className="contact-item">
+              <a href="tel:+5585996859051" className="contact-item">
                 <FiPhone />
-                <span>+55 (11) 99999-9999</span>
+                <span>+55 (85) 99685-9051</span>
               </a>
-              <a href="https://maps.google.com" className="contact-item">
+              <a href="https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7" className="contact-item">
                 <FiMapPin />
-                <span>São Paulo, Brasil</span>
+                <span>Fortaleza, Brasil</span>
               </a>
             </div>
           </motion.div>

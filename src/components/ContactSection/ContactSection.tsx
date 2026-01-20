@@ -36,8 +36,8 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: <FiMail />, title: 'Email', value: 'contato@paraisoframes.com', link: 'mailto:contato@paraisoframes.com' },
-    { icon: <FiPhone />, title: 'Telefone', value: '+55 (11) 99999-9999', link: 'tel:+5511999999999' },
-    { icon: <FiMapPin />, title: 'Localização', value: 'São Paulo, Brasil', link: 'https://maps.google.com' },
+    { icon: <FiPhone />, title: 'Telefone', value: '+55 (85) 99685-9051', link: 'tel:+5585996859051' },
+    { icon: <FiMapPin />, title: 'Localização', value: 'Fortaleza, Brasil', link: 'https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7' },
   ];
 
   const socialLinks = [
@@ -219,12 +219,20 @@ const ContactSection = () => {
           className="map-section"
         >
           <h3>Onde Estamos</h3>
-          <div className="map-placeholder">
-            <div className="map-overlay">
-              <FiMapPin size={48} />
-              <p>São Paulo - Centro de Produção Audiovisual</p>
+          <a 
+            href="https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="map-link"
+          >
+            <div className="map-placeholder">
+              <div className="map-overlay">
+                <FiMapPin size={48} />
+                <p>Fortaleza - Centro de Produção Audiovisual</p>
+                <span className="map-link-text">Clique para ver no mapa</span>
+              </div>
             </div>
-          </div>
+          </a>
         </motion.div>
       </div>
     </section>
