@@ -171,6 +171,24 @@
       .credits p {
         color: #888;
       }
+
+      .portfolio-link {
+        font-size: 0.875rem;
+        color: #888;
+        margin-top: 8px;
+
+        a {
+          color: #6366f1;
+          text-decoration: none;
+          transition: var(--transition-base);
+
+          &:hover {
+            color: #8b5cf6;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
     }
   }
 

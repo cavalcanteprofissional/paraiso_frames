@@ -113,6 +113,16 @@ const Footer = () => {
           </div>
           <div className="credits">
             <p>Criado com ❤️ para contar histórias visuais</p>
+            <p className="portfolio-link">
+              Desenvolvido por{' '}
+              <a 
+                href="https://cavalcanteprofissional.github.io/cavalcanteprofissional/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Lucas Cavalcante
+              </a>
+            </p>
           </div>
         </motion.div>
       </div>
