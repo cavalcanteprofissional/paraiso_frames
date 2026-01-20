@@ -42,14 +42,14 @@ const AboutSection = () => {
             <div className="bio-text">
               <h3>Visual Storytellers</h3>
               <p>
-                Com mais de 8 anos de experiência no mercado audiovisual, especializamo-nos 
-                na criação de conteúdo que une técnica apurada e sensibilidade artística. 
-                Nosso trabalho abrange desde documentários autorais até produções comerciais 
+                Com mais de 8 anos de experiência no mercado audiovisual, especializamo-nos
+                na criação de conteúdo que une técnica apurada e sensibilidade artística.
+                Nosso trabalho abrange desde documentários autorais até produções comerciais
                 de grande escala, sempre buscando a excelência em cada frame.
               </p>
               <p>
-                Acreditamos no poder transformador do audiovisual e na capacidade de conectar 
-                pessoas através de narrativas visuais impactantes. Cada projeto é uma 
+                Acreditamos no poder transformador do audiovisual e na capacidade de conectar
+                pessoas através de narrativas visuais impactantes. Cada projeto é uma
                 oportunidade de explorar novas perspectivas e criar experiências memoráveis.
               </p>
             </div>
@@ -64,6 +64,9 @@ const AboutSection = () => {
           </div>
         </motion.section>
 
+        {/* Services Title - Mantido como está */}
+        <h3 className="services-title">Serviços</h3>
+        
         {/* Services Section */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
@@ -72,7 +75,6 @@ const AboutSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="services-section"
         >
-          <h3>Serviços</h3>
           <div className="services-grid">
             {services.map((service, index) => (
               <motion.div
