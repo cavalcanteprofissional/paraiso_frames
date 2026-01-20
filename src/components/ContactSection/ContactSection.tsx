@@ -210,30 +210,7 @@ const ContactSection = () => {
           </motion.form>
         </div>
 
-        {/* Map Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="map-section"
-        >
-          <h3>Onde Estamos</h3>
-          <a 
-            href="https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="map-link"
-          >
-            <div className="map-placeholder">
-              <div className="map-overlay">
-                <FiMapPin size={48} />
-                <p>Fortaleza - Centro de Produção Audiovisual</p>
-                <span className="map-link-text">Clique para ver no mapa</span>
-              </div>
-            </div>
-          </a>
-        </motion.div>
+
       </div>
     </section>
   );

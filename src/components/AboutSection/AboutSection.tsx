@@ -1,22 +1,16 @@
 import { motion } from 'framer-motion';
-import { FiAward, FiCamera, FiFilm, FiUsers } from 'react-icons/fi';
+import { FiAward, FiCamera, FiFilm, FiUsers, FiTrendingUp, FiTarget } from 'react-icons/fi';
 import './AboutSection.scss';
 
 const AboutSection = () => {
-  const skills = [
-    { name: 'Direção', level: 95 },
-    { name: 'Cinematografia', level: 90 },
-    { name: 'Edição', level: 88 },
-    { name: 'Color Grading', level: 92 },
-    { name: 'Pós-produção', level: 85 },
-    { name: 'Motion Graphics', level: 80 },
-  ];
 
   const services = [
     { icon: <FiFilm />, title: 'Direção', description: 'Desenvolvimento criativo e direção de projetos audiovisuais' },
     { icon: <FiCamera />, title: 'Cinematografia', description: 'Captação de imagem com sensibilidade artística e técnica' },
     { icon: <FiAward />, title: 'Pós-produção', description: 'Edição, color grading e finalização profissional' },
     { icon: <FiUsers />, title: 'Coordenação', description: 'Gestão de equipe e produção executiva' },
+    { icon: <FiTrendingUp />, title: 'Marketing Digital', description: 'Estratégias de marketing para maximizar alcance e engajamento' },
+    { icon: <FiTarget />, title: 'Tráfego Pago', description: 'Gestão de campanhas pagas para resultados mensuráveis' },
   ];
 
   return (
@@ -67,36 +61,6 @@ const AboutSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </motion.section>
-
-        {/* Skills Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="skills-section"
-        >
-          <h3>Habilidades Técnicas</h3>
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <div key={skill.name} className="skill-item">
-                <div className="skill-header">
-                  <span className="skill-name">{skill.name}</span>
-                  <span className="skill-percent">{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <motion.div
-                    className="skill-progress"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.6 + index * 0.1 }}
-                  />
-                </div>
-              </div>
-            ))}
           </div>
         </motion.section>
 
