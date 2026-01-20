@@ -11,15 +11,33 @@
 
   .hero-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: minmax(0, 1.2fr) 1fr;
+    gap: clamp(40px, 5vw, 80px);
     align-items: center;
     min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
 
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
       gap: 40px;
       text-align: center;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 20px;
+      padding: 0 15px;
     }
   }
 
@@ -28,27 +46,58 @@
     
     .hero-player {
       width: 100%;
-      height: auto;
+      height: clamp(300px, 60vh, 800px);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      background: #000;
+
+      @media (max-width: 1024px) {
+        height: clamp(250px, 50vh, 600px);
+        max-width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        height: clamp(200px, 40vh, 500px);
+        border-radius: 12px;
+      }
+
+      @media (max-width: 480px) {
+        height: clamp(150px, 30vh, 400px);
+        border-radius: 8px;
+      }
     }
   }
 
   .hero-info {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: clamp(20px, 4vw, 40px);
+    max-width: 500px;
 
     @media (max-width: 1024px) {
       align-items: center;
+      max-width: 100%;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      gap: 30px;
     }
   }
 
   .video-details {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: clamp(16px, 3vw, 24px);
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 16px;
+    }
   }
 
   .video-title {
@@ -98,12 +147,17 @@
   .video-navigation {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 24px;
+    gap: clamp(12px, 2vw, 20px);
+    padding: clamp(16px, 3vw, 24px);
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (max-width: 768px) {
+      gap: 16px;
+      padding: 20px;
+    }
   }
 
   .video-counter {
@@ -165,11 +219,17 @@
 
   .thumbnails {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: clamp(8px, 2vw, 12px);
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
   }
 
