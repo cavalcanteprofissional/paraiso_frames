@@ -8,6 +8,10 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import './VideoPlayer.scss';
 
+interface ReactPlayerRef {
+  seekTo: (fraction: number) => void;
+}
+
 interface VideoPlayerProps {
   url: string;
   title?: string;
@@ -33,9 +37,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [played, setPlayed] = useState(0);
   const [duration, setDuration] = useState(0);
   
-const playerRef = useRef<any>(null);
+const playerRef = useRef<ReactPlayerRef>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const uiTimeoutRef = useRef<any>(null);
+  const uiTimeoutRef = useRef<number | null>(null);
 
   // Auto-hide UI após 3 segundos
 const resetUITimeout = useCallback(() => {
@@ -96,8 +100,7 @@ const formatTime = (seconds: number) => {
     };
   }, []);
 
-// @ts-ignore
-  return (
+return (
     <div 
       className={`video-player ${isFullscreen ? 'fullscreen' : ''}`} 
       ref={containerRef}
@@ -106,17 +109,18 @@ const formatTime = (seconds: number) => {
     >
       <div className="player-wrapper">
 <ReactPlayer
-          ref={playerRef}
-          // @ts-ignore
-          url={url}
-          playing={isPlaying}
-          volume={volume}
-          muted={isMuted}
-          width="100%"
-          height="100%"
-          onProgress={handleProgress as any}
-          onDuration={setDuration}
-          onEnded={onNext}
+          {...{
+            ref: playerRef as any,
+            url,
+            playing: isPlaying,
+            volume,
+            muted: isMuted,
+            width: "100%",
+            height: "100%",
+            onProgress: handleProgress as any,
+            onDuration: setDuration,
+            onEnded: onNext
+          } as any}
         />
 
         <AnimatePresence>
