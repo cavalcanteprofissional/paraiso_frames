@@ -105,9 +105,9 @@ const formatTime = (seconds: number) => {
       onTouchStart={resetUITimeout}
     >
       <div className="player-wrapper">
-        <ReactPlayer
-          // @ts-ignore
+<ReactPlayer
           ref={playerRef}
+          // @ts-ignore
           url={url}
           playing={isPlaying}
           volume={volume}

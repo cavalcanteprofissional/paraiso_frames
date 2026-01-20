@@ -23,7 +23,7 @@
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 30px;
     }
   }
 
@@ -167,8 +167,10 @@
         color: #666;
         margin: 0;
       }
+    }
 
-      .credits p {
+    .credits {
+      p {
         color: #888;
       }
 
@@ -188,7 +190,6 @@
           }
         }
       }
-    }
     }
   }
 
