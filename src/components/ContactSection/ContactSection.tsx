@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiInstagram, FiYoutube, FiLinkedin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import './ContactSection.scss';
 
 const ContactSection = () => {
@@ -36,14 +37,15 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: <FiMail />, title: 'Email', value: 'contato@paraisoframes.com', link: 'mailto:contato@paraisoframes.com' },
-    { icon: <FiPhone />, title: 'Telefone', value: '+55 (85) 99685-9051', link: 'tel:+5585996859051' },
+    { icon: <FiPhone />, title: 'Telefone', value: '+55 85 9906-7269', link: 'tel:+558599067269' },
     { icon: <FiMapPin />, title: 'Localização', value: 'Fortaleza, Brasil', link: 'https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7' },
   ];
 
   const socialLinks = [
-    { icon: <FiInstagram />, name: 'Instagram', url: 'https://instagram.com' },
+    { icon: <FiInstagram />, name: 'Instagram', url: 'https://www.instagram.com/paraisoframes/' },
+    { icon: <FaWhatsapp />, name: 'WhatsApp', url: 'https://wa.me/558599067269' },
     { icon: <FiYoutube />, name: 'YouTube', url: 'https://youtube.com' },
-    { icon: <FiLinkedin />, name: 'LinkedIn', url: 'https://linkedin.com' },
+    { icon: <FiLinkedin />, name: 'LinkedIn', url: 'https://www.linkedin.com/in/matheus-barros-015008251/' },
   ];
 
   return (
@@ -98,7 +100,7 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <div className="social-section">
-              <h4>Conecte-se</h4>
+              <h4>Entre em contato</h4>
               <div className="social-links">
                 {socialLinks.map((social) => (
                   <a

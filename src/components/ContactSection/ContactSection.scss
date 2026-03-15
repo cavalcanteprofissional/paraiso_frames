@@ -83,7 +83,7 @@
 
     .contact-detail {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: clamp(12px, 2vw, 16px);
       padding: clamp(16px, 3vw, 20px);
       background: rgba(255, 255, 255, 0.05);
@@ -101,10 +101,37 @@
         transform: translateX(5px);
       }
 
-      svg {
+      .detail-icon {
         flex-shrink: 0;
-        width: clamp(16px, 4vw, 20px);
-        height: clamp(16px, 4vw, 20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        svg {
+          width: clamp(16px, 4vw, 20px);
+          height: clamp(16px, 4vw, 20px);
+        }
+      }
+
+      .detail-content {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+
+        .detail-title {
+          font-size: clamp(0.75rem, 2vw, 0.875rem);
+          color: #888;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+          color: #fff;
+          font-weight: 400;
+          font-size: clamp(0.875rem, 2vw, 1rem);
+        }
       }
     }
   }

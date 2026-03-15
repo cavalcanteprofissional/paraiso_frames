@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiInstagram, FiYoutube, FiLinkedin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import './Footer.scss';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
-    { icon: <FiInstagram />, name: 'Instagram', url: 'https://instagram.com' },
+    { icon: <FiInstagram />, name: 'Instagram', url: 'https://www.instagram.com/paraisoframes/' },
+    { icon: <FaWhatsapp />, name: 'WhatsApp', url: 'https://wa.me/558599067269' },
     { icon: <FiYoutube />, name: 'YouTube', url: 'https://youtube.com' },
-    { icon: <FiLinkedin />, name: 'LinkedIn', url: 'https://linkedin.com' },
+    { icon: <FiLinkedin />, name: 'LinkedIn', url: 'https://www.linkedin.com/in/matheus-barros-015008251/' },
   ];
 
   return (
@@ -23,8 +25,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="brand-logo">
-              <span className="logo-icon">🎬</span>
-              <span className="logo-text">Paraíso Frames</span>
+              <img src="/paraisoframes.svg" alt="Paraísmo Frames" className="logo-img" />
             </div>
             <p className="brand-description">
               Criando histórias visuais que inspiram e conectam. 
@@ -46,9 +47,9 @@ const Footer = () => {
                 <FiMail />
                 <span>contato@paraisoframes.com</span>
               </a>
-              <a href="tel:+5585996859051" className="contact-item">
+              <a href="tel:+558599067269" className="contact-item">
                 <FiPhone />
-                <span>+55 (85) 99685-9051</span>
+                <span>+55 85 9906-7269</span>
               </a>
               <a href="https://maps.app.goo.gl/FjjXLcmrvQpzMBqh7" className="contact-item">
                 <FiMapPin />

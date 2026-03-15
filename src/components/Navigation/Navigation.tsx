@@ -61,8 +61,7 @@ return (
               animate={{ opacity: 1, x: 0 }}
               className="logo-content"
             >
-              <span className="logo-icon">🎬</span>
-              <span className="logo-text">Paraíso Frames</span>
+              <img src="/paraisoframes.svg" alt="Paraíso Frames" className="logo-img" />
             </motion.div>
           </button>
 
@@ -98,7 +97,7 @@ return (
             transition={{ type: 'spring', damping: 25 }}
           >
             <div className="mobile-menu-header">
-              <span className="logo-text">Paraíso Frames</span>
+              <img src="/paraisoframes.svg" alt="Paraído Frames" className="mobile-logo-img" />
               <button onClick={toggleMenu} className="close-btn">
                 <FiX size={24} />
               </button>

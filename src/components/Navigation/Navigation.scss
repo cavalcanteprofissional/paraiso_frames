@@ -29,6 +29,15 @@
     gap: 0.75rem;
   }
 
+  .logo-img {
+    height: 40px;
+    width: auto;
+    
+    @media (max-width: 768px) {
+      height: 32px;
+    }
+  }
+
   .logo-icon {
     font-size: 1.5rem;
   }
@@ -116,6 +125,11 @@
   align-items: center;
   padding: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .mobile-logo-img {
+    height: 35px;
+    width: auto;
+  }
 
   .logo-text {
     font-size: 1.2rem;

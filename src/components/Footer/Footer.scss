@@ -37,6 +37,11 @@
       gap: var(--space-3);
       margin-bottom: var(--space-5);
 
+      .logo-img {
+        height: 50px;
+        width: auto;
+      }
+
       .logo-icon {
         font-size: 2rem;
       }
@@ -95,12 +100,12 @@
     .contact-items {
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-4);
     }
 
     .contact-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--space-3);
       color: #ccc;
       text-decoration: none;
@@ -114,8 +119,9 @@
 
       svg {
         flex-shrink: 0;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
       }
     }
   }
