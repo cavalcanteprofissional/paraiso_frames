@@ -6,12 +6,13 @@ const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Vídeo principal - você pode substituir pela sua URL
+  // Vídeo principal - YouTube placeholder
   const heroVideo = {
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-sunset-over-a-lake-1095-large.mp4',
+    url: 'https://www.youtube.com/watch?v=AALrH26HAmw',
+    youtubeId: 'AALrH26HAmw',
     fallbackImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    title: 'Showreel 2024',
-    subtitle: 'Cinematic Visual Experiences'
+    title: 'Cinematic Showreel',
+    subtitle: 'Visual Storytelling Excellence'
   };
 
   useEffect(() => {
@@ -55,7 +56,9 @@ const HeroSection = () => {
           preload="auto"
           poster={heroVideo.fallbackImage}
         >
-          <source src={heroVideo.url} type="video/mp4" />
+          {/* YouTube embed as primary source */}
+          <source src={`https://www.youtube.com/embed/${heroVideo.youtubeId}?autoplay=1&mute=1&playlist=${heroVideo.youtubeId}&loop=1`} type="video/mp4" />
+          
           {/* Fallback para navegadores sem suporte */}
           <img src={heroVideo.fallbackImage} alt={heroVideo.title} />
         </video>
@@ -101,10 +104,10 @@ const HeroSection = () => {
             className="hero-cta"
           >
             <a href="#portfolio" className="cta-button">
-              View Portfolio
+              Veja Mais
             </a>
             <a href="#contact" className="cta-button secondary">
-              Get in Touch
+              Entre em contato
             </a>
           </motion.div>
         </motion.div>
@@ -119,7 +122,7 @@ const HeroSection = () => {
           <div className="mouse">
             <div className="wheel"></div>
           </div>
-          <p>Scroll to explore</p>
+          <p>Role para explorar</p>
         </motion.div>
       </div>
     </section>

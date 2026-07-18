@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Paraíso Frames — Portfólio Audiovisual
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Versão](https://img.shields.io/badge/versão-0.1.0-blue)]()
+[![React](https://img.shields.io/badge/React-19-61DAFB)]()
 
-Currently, two official plugins are available:
+Portfólio single-page para **Paraíso Frames**, produtora audiovisual em Fortaleza, CE.
+Construído com React 19, TypeScript, Vite 7 e SCSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## React Compiler
+- Hero section com vídeo em background (YouTube ou local)
+- Galeria de portfólio com filtros por categoria
+- Player de vídeo com suporte a YouTube, DASH e HLS
+- Feed do Instagram integrado (via Instagram Basic Display API)
+- Seção "Sobre" com grid de serviços
+- Formulário de contato + mapa Leaflet
+- Design responsivo mobile-first
+- Animações com Framer Motion
+- Navegação por teclado e gestos touch
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias
 
-## Expanding the ESLint configuration
+- **Framework:** React 19
+- **Linguagem:** TypeScript
+- **Bundler:** Vite 7
+- **Estilos:** SCSS (design system com tokens CSS)
+- **Animações:** Framer Motion
+- **Mapa:** Leaflet + react-leaflet
+- **Vídeo:** react-player (YouTube, DASH, HLS)
+- **Carrossel:** Swiper
+- **Ícones:** react-icons (Feather + FontAwesome)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Scripts
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev      # Iniciar servidor de desenvolvimento
+npm run build    # Build de produção (tsc -b && vite build)
+npm run lint     # Verificar lint
+npm run preview  # Preview do build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Changelog
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Veja o histórico completo de alterações em [CHANGELOG.md](./CHANGELOG.md).

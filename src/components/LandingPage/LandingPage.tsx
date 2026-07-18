@@ -1,5 +1,6 @@
 import HeroSection from '../Hero/HeroSection';
 import PortfolioSection from '../PortfolioSection/PortfolioSection';
+import InstagramSection from '../InstagramFeed/InstagramSection';
 import AboutSection from '../AboutSection/AboutSection';
 import ContactSection from '../ContactSection/ContactSection';
 import Footer from '../Footer/Footer';
@@ -10,6 +11,7 @@ const LandingPage = () => {
     <div className="landing-page">
       <HeroSection />
       <PortfolioSection />
+      <InstagramSection />
       <AboutSection />
       <ContactSection />
       <Footer />

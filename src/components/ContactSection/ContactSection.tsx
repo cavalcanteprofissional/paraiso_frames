@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiInstagram, FiYoutube, FiLinkedin } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import ContactMap from './ContactMap';
 import './ContactSection.scss';
 
 const ContactSection = () => {
@@ -72,13 +73,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="contact-info"
           >
-            <div className="info-section">
-              <h3>Entre em Contato</h3>
-              <p>
-                Estamos sempre abertos a discutir novos projetos, ideias criativas 
-                ou oportunidades para fazer parte da sua visão.
-              </p>
-              
+<div className="info-section">
               <div className="contact-details">
                 {contactInfo.map((info) => (
                   <a
@@ -100,7 +95,7 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <div className="social-section">
-              <h4>Entre em contato</h4>
+              <h4>Siga-nos em nossas redes</h4>
               <div className="social-links">
                 {socialLinks.map((social) => (
                   <a
@@ -114,6 +109,12 @@ const ContactSection = () => {
                     <span>{social.name}</span>
                   </a>
                 ))}
+              </div>
+
+              {/* Map */}
+              <div className="map-section">
+                <h4>Nos visite em Fortaleza</h4>
+                <ContactMap />
               </div>
             </div>
           </motion.div>

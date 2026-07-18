@@ -96,7 +96,6 @@ const Footer = () => {
             <p>&copy; {currentYear} Paraíso Frames. Todos os direitos reservados.</p>
           </div>
           <div className="credits">
-            <p>Criado com ❤️ para contar histórias visuais</p>
             <p className="portfolio-link">
               Desenvolvido por{' '}
               <a 

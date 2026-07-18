@@ -11,9 +11,7 @@
 
 ## 📋 Tarefas Pendentes
 
-### 1. Implementar API Oficial do Instagram (@paraisoframes)
-**Status:** ⏳ Aguardando acesso à conta  
-**Método:** API oficial do Meta (Instagram Basic Display API)
+### Instagram Feed Dinâmico
 
 #### 1.1 Pré-requisitos do Usuário (A FAZER)
 - [ ] Criar conta no [Meta Developer Portal](https://developers.facebook.com/)
@@ -23,16 +21,17 @@
 - [ ] Tornar conta @paraisoframes pública (se for privada)
 - [ ] Gerar access token através do fluxo OAuth (fazer login em @paraisoframes)
 
-#### 1.2 Implementação Técnica (APÓS TER ACESSO)
-- [ ] Criar serviço/hook para consumir API do Instagram
-- [ ] Criar componente InstagramFeed.tsx
-- [ ] Integrar ao site (seção dedicada ou no Footer)
-- [ ] Estilizar conforme identidade visual
-- [ ] Testar e verificar funcionamento
+#### 1.2 Implementação Técnica
+- [x] Template hook `useInstagramFeed.ts` | **Status:** ✅ Concluído
+- [x] Componente `InstagramFeed.tsx` (carousel) | **Status:** ✅ Concluído
+- [x] Seção `InstagramSection.tsx` com fallback | **Status:** ✅ Concluído
+- [ ] Configurar variáveis de ambiente | **Pendente** (aguardando access token)
+- [ ] Integrar à LandingPage | **Pendente**
+- [ ] Testar e verificar funcionamento | **Pendente**
 
 ---
 
-## 📝 Notas
+## 📝 Especificação Técnica
 
 ### Configuração Meta Developer Portal (Passos):
 1. Acesse developers.facebook.com e crie conta
@@ -41,15 +40,40 @@
 4. Configure "User Token Generator" com conta @paraisoframes
 5. Gere o long-lived access token (60 dias validade)
 
-### Endpoints úteis:
+### Variáveis de Ambiente (`.env`):
+```env
+VITE_INSTAGRAM_ACCESS_TOKEN=seu_token_aqui
+VITE_INSTAGRAM_USER_ID=seu_user_id_aqui
+```
+
+### Endpoints da API:
 - `GET /me` - informações do usuário
 - `GET /me/media` - lista de posts
 - `GET /{media-id}` - detalhes de um post específico
+- `GET /{media-id}/children` - mídia crianças (para albums)
 
-### Alternativa futura:
-- Instagram Graph API (para funcionalidades mais avançadas)
-- Verificação Business (necessária para app em produção)
+### Componentes:
+| Componente | Descrição |
+|-----------|-----------|
+| `useInstagramFeed.ts` | Hook para consumir API e gerenciar cache |
+| `InstagramFeed.tsx` | Carousel com posts (Swiper) |
+| `InstagramSection.tsx` | Seção wrapper com fallback |
+
+### Layout:
+- Carousel responsivo (Swiper)
+- Fallback: Card com link para perfil + mensagem
 
 ---
 
-*Última atualização: 2026-03-15*
+## 📋 Tarefas de Teste
+
+### Testes a executar:
+- [ ] Verificar se a API retorna dados corretamente
+- [ ] Testar responsividade em diferentes tamanhos de tela
+- [ ] Verificar fallback quando API não configurada
+- [ ] Testar performance (lazy loading das imagens)
+- [ ] Verificar acessibilidade (keyboard navigation)
+
+---
+
+*Última atualização: 2026-04-15*

@@ -1,7 +1,7 @@
 {
   "name": "paraiso_frames",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,18 +11,21 @@
   },
   "dependencies": {
     "framer-motion": "^12.27.5",
+    "leaflet": "^1.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
+    "react-leaflet": "^5.0.0",
     "react-player": "^3.4.0",
-    
     "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
+    "@types/react-leaflet": "^2.8.3",
     "@types/swiper": "^5.4.3",
     "@vitejs/plugin-react": "^5.1.1",
     "eslint": "^9.39.1",
